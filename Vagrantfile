@@ -14,6 +14,18 @@ Vagrant.configure("2") do |config|
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "bento/centos-8.2"
 
+  config.vm.define "CM01" do |cm01|
+    cm01.vm.box = "CM01"
+    cm01.vm.network "private_network", ip: "192.168.33.10"
+  end
+
+  config.vm.define "AP01" do |ap01|
+    ap01.vm.box = "AP01"
+    ap01.vm.network "private_network", ip: "192.168.33.11"
+  end
+
+  config.vm.synced_folder '.', '/vagrant', disabled: true
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
