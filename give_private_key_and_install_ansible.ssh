@@ -22,15 +22,16 @@ declare -ri RC_SUCCESS=0
 # 引数で与えられたユーザに指定したコマンド列を渡す
 # 秘密鍵が~/.sshに存在しなければ、/vagrant以下からコピーする。
 # その後パッケージのインストールを行う。
-su - "$1" -c '
+su - vagrant -c '
     mkdir -p ~/.ssh
 
-    if[[ -f ~/.ssh/id_rsa ]]; then
-        cp /vagrant/id_rsa ~./ssh/id_rsa
+    if [[ ! -f ~/.ssh/id_rsa ]]; then
+        cp /vagrant/id_rsa ~/.ssh/
+        chmod 600 ~/.ssh/id_rsa
     fi
 
-    dnf install epel-release -y
-    dnf install ansible -y
+    sudo dnf install epel-release -y
+    sudo dnf install ansible -y
 '
 
 exit ${RC_SUCCESS}
