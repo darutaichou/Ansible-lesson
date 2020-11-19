@@ -17,11 +17,17 @@ Vagrant.configure("2") do |config|
   config.vm.define "CM01" do |cm01|
     cm01.vm.box = "bento/centos-8.2"
     cm01.vm.network "private_network", ip: "192.168.33.10"
+    cm01.vm.provsion :shell do |shell|
+      shell.path = "give_private_key_and_install_ansible.sh"
+      shell.args = 'vagrant'
   end
 
   config.vm.define "AP01" do |ap01|
     ap01.vm.box = "bento/centos-8.2"
     ap01.vm.network "private_network", ip: "192.168.33.11"
+    cm01.vm.provsion :shell do |shell|
+      shell.path = "give_public_key_and_install_python3.ssh"
+      shell.args = 'vagrant'
   end
 
   config.vm.synced_folder '.', '/vagrant'

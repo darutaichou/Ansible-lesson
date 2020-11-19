@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# 形式: give_private_key_and_install_python3.ssh 鍵を付与されるユーザ名
+# 形式: give_public_key_and_install_python3.sh 鍵を付与されるユーザ名
 #
 # 概要: 公開鍵id_rsa.pubが~/.sshに存在しなければ、/vagrantから秘密鍵id_rsa.pubをコピーし、
 # 　　　最新のpython3をインストールします。
