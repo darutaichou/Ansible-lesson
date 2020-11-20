@@ -25,7 +25,7 @@ declare -ri RC_SUCCESS=0
 su - vagrant -c "
     mkdir -p ~/.ssh
 
-    if [[ $( < ~/.ssh/authorized_keys wc -l ) -eq 0 ]]; then
+    if ! cat ~/.ssh/authorized_keys | grep is_there_public_key_CM01 ; then
         cat /vagrant/id_rsa.pub >> ~/.ssh/authorized_keys
     fi
 
