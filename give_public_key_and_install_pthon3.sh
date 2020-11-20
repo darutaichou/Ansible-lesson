@@ -22,14 +22,15 @@ declare -ri RC_SUCCESS=0
 # 引数で与えられたユーザに指定したコマンド列を渡す
 # 公開鍵が~/.sshに存在しなければ、/vagrant以下からコピーする。
 # その後パッケージのインストールを行う。
-su - vagrant -c '
+su - vagrant -c "
     mkdir -p ~/.ssh
 
-    if [[ ! -f ~/.ssh/id_rsa.pub ]]; then
-        cp /vagrant/id_rsa.pub ~/.ssh/
+    if [[ $( < ~/.ssh/authorized_keys wc -l ) -eq 0 ]]; then
+        cat /vagrant/id_rsa.pub >> ~/.ssh/authorized_keys
     fi
 
     sudo dnf install python3 -y
-'
+"
+
 
 exit ${RC_SUCCESS}
