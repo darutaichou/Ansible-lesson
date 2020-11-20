@@ -27,8 +27,6 @@ su - vagrant -c "
     if ! < ~/.ssh/authorized_keys  grep is_there_public_key_CM01 >> /dev/null 2>&1 ; then
         cat /vagrant/id_rsa.pub >> ~/.ssh/authorized_keys
     fi
-
-    sudo dnf install python3 -y
 "
 
 

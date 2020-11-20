@@ -18,12 +18,15 @@ Vagrant.configure("2") do |config|
     cm01.vm.box = "bento/centos-8.2"
     cm01.vm.network "private_network", ip: "192.168.33.10"
     cm01.vm.provision "shell", path: "give_private_key_and_install_ansible.sh"
+    cm01.vm.provision "shell", inline: "sudo dnf install epel-release -y"
+    cm01.vm.provision "shell",  inline: "sudo dnf install ansible -y"
   end
 
   config.vm.define "AP01" do |ap01|
     ap01.vm.box = "bento/centos-8.2"
     ap01.vm.network "private_network", ip: "192.168.33.11"
     ap01.vm.provision "shell", path: "give_public_key_and_install_python3.sh"
+    ap01.vm.provision "shell",  inline: "sudo dnf install python3 -y"
   end
 
   config.vm.synced_folder '.', '/vagrant'
