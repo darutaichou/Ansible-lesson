@@ -4,5 +4,5 @@
   become: yes
   tasks:
     - template:
-        content: Hello {{ application_servers }}!
+        src: files/motd-hello-app-servers
         dest: /etc/motd
