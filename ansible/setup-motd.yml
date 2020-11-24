@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - copy:
-        src: motd-hello-world
+        src: roles/files/motd-hello-world
         dest: /etc/motd
         owner: vagrant
         group: vagrant
