@@ -1,0 +1,2 @@
+#.vagrantをGitに無視してほしい
+.vagrant
