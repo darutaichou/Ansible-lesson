@@ -3,7 +3,7 @@
   hosts: AP01
   become: yes
   tasks:
-    - template:
+    - copy:
         src: motd-hello-world
         dest: /etc/motd
         owner: vagrant
