@@ -43,5 +43,5 @@
 ## db-[99:101]-node.example.com
 
 [AP]
-AP01 ansible_host=192.168.33.21
-AP02 ansible_host=192.168.33.21
+AP01 
+AP02 
