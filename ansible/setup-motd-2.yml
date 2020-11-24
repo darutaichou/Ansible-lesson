@@ -4,5 +4,5 @@
   become: yes
   tasks:
     - template:
-        src: files/motd-hello-app-servers
+        src: motd-hello-app-server.j2
         dest: /etc/motd
