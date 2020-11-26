@@ -1,0 +1,8 @@
+---
+- name: MOTDに「Hello <アプリケーションサーバ名>!」を表示する
+  hosts: AP
+  become: yes
+  tasks:
+    - template:
+        src: motd-hello-app-server.j2
+        dest: /etc/motd
