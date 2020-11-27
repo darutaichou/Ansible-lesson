@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
     ap01.vm.hostname = "AP01"
     ap01.vm.provision "shell", path: "give_public_key.sh"
     ap01.vm.provision "shell",  inline: "sudo dnf install python3 -y"
+    ap01.vm.provision "shell",  inline: "systemctl enable firewalld.service"
   end
 
   config.vm.define "AP02" do |ap02|
@@ -37,6 +38,7 @@ Vagrant.configure("2") do |config|
     ap02.vm.hostname = "AP02"
     ap02.vm.provision "shell", path: "give_public_key.sh"
     ap02.vm.provision "shell",  inline: "sudo dnf install python3 -y"
+    ap02.vm.provision "shell",  inline: "systemctl enable firewalld.service"
   end
 
   config.vm.synced_folder '.', '/vagrant'
