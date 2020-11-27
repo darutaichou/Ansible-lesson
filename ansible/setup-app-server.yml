@@ -5,13 +5,15 @@
   tasks:
     - name: nginxのインストール
       yum: name=nginx state=latest
+
     - name: nginxを起動させて、自動起動するようにする。
       service:
         name: nginx
         state: started
         enabled: yes
+
     - name: TCP80番ポートのファイアウォールを無効にする。
-      ansible.posix.firewalld:
+      firewalld:
         port: 80/tcp
         permanent: yes
         state: enabled
