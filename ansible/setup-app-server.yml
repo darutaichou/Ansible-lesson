@@ -1,0 +1,19 @@
+---
+- name: アプリケーションサーバにnginxをインストールし、nginxサービスが自動起動するように設定する。
+  hosts: AP
+  become: yes
+  tasks:
+    - name: nginxのインストール
+      yum: name=nginx state=latest
+
+    - name: nginxを起動させて、自動起動するようにする。
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    - name: TCP80番ポートのファイアウォールを無効にする。
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
