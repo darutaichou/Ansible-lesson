@@ -1,0 +1,29 @@
+---
+- name: アプリケーションサーバにnginxとPostgreSQLをインストールし、nginxとPostgreSQLが起動したらジャーナルログに"Stand-by"と表示するサービスを新規登録する。
+  hosts: AP
+  become: yes
+  tasks:
+    - name: NginxとPostgreSQLとPostgreSQLサーバのインストール
+      yum: 
+        name:
+        - nginx
+        - postgresql
+        - postgresql-server
+        state: latest
+
+    - name: app-server.serviceを/etc/systemd/systemに配置する。
+      copy:
+          src: files/app-server.service
+          dest: /etc/systemd/system
+          owner: root
+          group: root
+          mode: 0644
+
+    - name: nginxとPostgreSQLとapp-server.serviceを自動起動するようにする。
+      service:
+        name: '{{ item }}'
+        enabled: yes
+      with_items:
+        - nginx.service
+        - postgresql.service
+        - app-server.service

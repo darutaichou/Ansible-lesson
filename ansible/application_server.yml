@@ -1,0 +1,5 @@
+---
+- hosts: AP
+  become: yes
+  roles:
+   - application_server

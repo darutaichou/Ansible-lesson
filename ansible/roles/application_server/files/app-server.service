@@ -1,0 +1,11 @@
+[Unit]
+Description=Output the message about Nginx and PostgreSQL
+Requires=nginx.service postgresql.service
+
+[Service]
+Type=simple
+ExecStart=logger Stand-by
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

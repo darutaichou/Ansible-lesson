@@ -1,0 +1,7 @@
+---
+- yum: 
+      name:
+      - nginx
+      - postgresql
+      - postgresql-server
+      state: latest

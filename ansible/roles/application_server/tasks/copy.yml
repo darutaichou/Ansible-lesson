@@ -1,0 +1,8 @@
+---
+- copy:
+      src: files/app-server.service
+      dest: /etc/systemd/system
+      owner: root
+      group: root
+      mode: 0644
+    
